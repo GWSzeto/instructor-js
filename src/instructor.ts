@@ -94,7 +94,7 @@ class Instructor {
     const makeCompletionCallWithRetries = async () => {
       try {
         const data = await makeCompletionCall()
-        const validation = params.response_model.safeParse(data)
+        const validation = await params.response_model.safeParseAsync(data)
         if (!validation.success) {
           if ("error" in validation) {
             lastMessage = {
